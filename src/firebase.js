@@ -1,16 +1,20 @@
-import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/firestore"
+import firebase from "firebase/app";
+import config from "./config.json";
+import "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBHZ6zCwuWerVsKbuNucYoDY6vZ2hegm6s",
-  authDomain: "reels-e8852.firebaseapp.com",
-  projectId: "reels-e8852",
-  storageBucket: "reels-e8852.appspot.com",
-  messagingSenderId: "503952778310",
-  appId: "1:503952778310:web:ec723d3f043023c1f7d647"
+import "firebase/firestore";
+
+firebase.initializeApp(config);
+
+//flag => using google
+let provider = new firebase.auth.GoogleAuthProvider();
+
+//object jiske ander login/logout/signup
+export const auth = firebase.auth();
+
+export const signInWithGoogle = () => {
+  //ki muje popup ko use krke sign up krna with google
+  auth.signInWithPopup(provider);
 };
 
-  firebase.initializeApp(firebaseConfig);
-
-  export default firebase;
+export default firebase;
